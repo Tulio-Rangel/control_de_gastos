@@ -98,7 +98,7 @@ class _CategoriesPageState extends State<CategoriesPage>
             },
           );
         },
-        child: Text('Agregar Categoría'),
+        child: Icon(Icons.add),
       ),
     );
   }

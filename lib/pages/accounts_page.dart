@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AccountsPage extends StatefulWidget {
   @override
@@ -59,7 +60,7 @@ class _AccountsPageState extends State<AccountsPage> {
             },
           );
         },
-        child: Text('Agregar Cuenta'),
+        child: Icon(Icons.add),
       ),
     );
   }
