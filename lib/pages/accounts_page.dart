@@ -7,7 +7,28 @@ class AccountsPage extends StatefulWidget {
 }
 
 class _AccountsPageState extends State<AccountsPage> {
-  List<String> accounts = ['Cuenta 1', 'Cuenta 2'];
+  List<String> accounts = [];
+
+  @override
+  void initState() {
+    super.initState();
+    loadAccounts();
+  }
+
+  void loadAccounts() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String>? savedAccounts = prefs.getStringList('accounts');
+    setState(() {
+      if (savedAccounts != null) {
+        accounts = savedAccounts;
+      }
+    });
+  }
+
+  void saveAccounts() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList('accounts', accounts);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +65,7 @@ class _AccountsPageState extends State<AccountsPage> {
                     onPressed: () {
                       setState(() {
                         accounts.add(newAccountName);
+                        saveAccounts(); // Guardar las cuentas actualizadas
                       });
                       Navigator.pop(context);
                     },
