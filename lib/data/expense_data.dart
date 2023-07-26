@@ -6,7 +6,7 @@ class ExpenseData extends ChangeNotifier {
   // List of All expenses
   List<ExpenseItem> overallExpenseList = [];
 
-  // Gewet Expense list
+  // Get Expense list
   List<ExpenseItem> getAllExpenseList() {
     return overallExpenseList;
   }
