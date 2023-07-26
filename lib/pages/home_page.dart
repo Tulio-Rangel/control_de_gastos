@@ -64,10 +64,17 @@ class _HomePageState extends State<HomePage> {
 
     // Close the add expense dialog
     Navigator.pop(context);
+    clear();
   }
 
   // Cancel
   void cancel() {}
+
+  // Clrear controllers
+  void clear() {
+    newExpenseNameController.clear();
+    newExpenseAmountController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
