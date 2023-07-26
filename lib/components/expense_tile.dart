@@ -16,7 +16,7 @@ class ExpenseTile extends StatelessWidget {
     return ListTile(
       title: Text(name),
       subtitle: Text('${dateTime.day}/${dateTime.month}/${dateTime.year}'),
-      trailing: Text(amount),
+      trailing: Text('\$$amount'),
     );
   }
 }
