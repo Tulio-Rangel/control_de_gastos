@@ -1,3 +1,4 @@
+import 'package:control_de_gastos/datetime/date_time_helper.dart';
 import 'package:control_de_gastos/models/expense_item.dart';
 
 class ExpenseData {
@@ -88,5 +89,19 @@ class ExpenseData {
     Map<String, double> dailyExpenseSummary = {
       // Date (yyyymmdd) : amountTotalForDay
     };
+
+    for (var expense in overallExpenseList) {
+      String date = convertDateTimeToString(expense.dateTime);
+      double amount = double.parse(expense.amount);
+
+      if (dailyExpenseSummary.containsKey(date)) {
+        double currentAmount = dailyExpenseSummary[date]!;
+        currentAmount += amount;
+        dailyExpenseSummary[date] = currentAmount;
+      } else {
+        dailyExpenseSummary.addAll({date: amount});
+      }
+    }
+    return dailyExpenseSummary;
   }
 }
