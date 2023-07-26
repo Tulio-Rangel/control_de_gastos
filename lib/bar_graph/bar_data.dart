@@ -9,8 +9,14 @@ class BarData {
   final double satAmount;
   final double sunAmount;
 
-  BarData(this.monAmount, this.tueAmount, this.wedAmount, this.thurAmount,
-      this.friAmount, this.satAmount, this.sunAmount);
+  BarData(
+      {required this.monAmount,
+      required this.tueAmount,
+      required this.wedAmount,
+      required this.thurAmount,
+      required this.friAmount,
+      required this.satAmount,
+      required this.sunAmount});
 
   List<IndividualBar> barData = [];
 
