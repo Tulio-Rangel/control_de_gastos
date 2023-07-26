@@ -1,4 +1,7 @@
+import 'package:control_de_gastos/data/expense_data.dart';
+import 'package:control_de_gastos/models/expense_item.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,7 +20,7 @@ class _HomePageState extends State<HomePage> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-          title: Text('Add new expense'),
+          title: const Text('Add new expense'),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -36,31 +39,49 @@ class _HomePageState extends State<HomePage> {
             // Save button
             MaterialButton(
               onPressed: save,
-              child: Text('Save'),
+              child: const Text('Save'),
             ),
 
             // Cancel button
             MaterialButton(
               onPressed: cancel,
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
           ]),
     );
   }
 
   // Save
-  void save() {}
+  void save() {
+    // Create expense item
+    ExpenseItem newExpense = ExpenseItem(
+        name: newExpenseNameController.text,
+        amount: newExpenseAmountController.text,
+        dateTime: DateTime.now());
+
+    // Add the new expense
+    Provider.of<ExpenseData>(context, listen: false).addNewExpense(newExpense);
+
+    // Close the add expense dialog
+    Navigator.pop(context);
+  }
 
   // Cancel
   void cancel() {}
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[300],
-      floatingActionButton: FloatingActionButton(
-        onPressed: addNewExpense,
-        child: const Icon(Icons.add),
+    return Consumer<ExpenseData>(
+      builder: (context, value, child) => Scaffold(
+        backgroundColor: Colors.grey[300],
+        floatingActionButton: FloatingActionButton(
+          onPressed: addNewExpense,
+          child: const Icon(Icons.add),
+        ),
+        body: ListView.builder(
+            itemCount: value.getAllExpenseList().length,
+            itemBuilder: (context, index) =>
+                ListTile(title: Text(value.getAllExpenseList()[index].name))),
       ),
     );
   }
