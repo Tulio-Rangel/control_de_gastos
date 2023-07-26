@@ -1,7 +1,8 @@
+import 'package:control_de_gastos/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(ControlDeGastosApp());
+  runApp(const ControlDeGastosApp());
 }
 
 class ControlDeGastosApp extends StatelessWidget {
@@ -10,11 +11,9 @@ class ControlDeGastosApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Control de Gastos',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: ControlDeGastosApp(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blueGrey),
+      home: const HomePage(),
     );
   }
 }
