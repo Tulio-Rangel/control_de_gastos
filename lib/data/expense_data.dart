@@ -1,7 +1,8 @@
 import 'package:control_de_gastos/datetime/date_time_helper.dart';
 import 'package:control_de_gastos/models/expense_item.dart';
+import 'package:flutter/cupertino.dart';
 
-class ExpenseData {
+class ExpenseData extends ChangeNotifier {
   // List of All expenses
   List<ExpenseItem> overallExpenseList = [];
 
