@@ -1,3 +1,4 @@
+import 'package:control_de_gastos/components/expense_summary.dart';
 import 'package:control_de_gastos/components/expense_tile.dart';
 import 'package:control_de_gastos/data/expense_data.dart';
 import 'package:control_de_gastos/models/expense_item.dart';
@@ -89,6 +90,11 @@ class _HomePageState extends State<HomePage> {
         body: ListView(
           children: [
             // Weekly summary
+            ExpenseSummary(startOfWeek: value.startOfWeekDate()),
+
+            const SizedBox(
+              height: 20,
+            ),
 
             // Expense list
             ListView.builder(

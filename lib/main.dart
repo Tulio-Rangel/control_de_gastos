@@ -16,8 +16,8 @@ class ControlDeGastosApp extends StatelessWidget {
       create: (context) => ExpenseData(),
       builder: ((context, child) => MaterialApp(
             debugShowCheckedModeBanner: false,
-            theme:
-                ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blueGrey),
+            theme: ThemeData(
+                useMaterial3: true, colorSchemeSeed: Colors.greenAccent),
             home: const HomePage(),
           )),
     );
