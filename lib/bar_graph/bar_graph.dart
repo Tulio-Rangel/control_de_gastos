@@ -12,16 +12,17 @@ class MyBarGraph extends StatelessWidget {
   final double satAmount;
   final double sunAmount;
 
-  const MyBarGraph(
-      {super.key,
-      required this.monAmount,
-      required this.tueAmount,
-      required this.wedAmount,
-      required this.thurAmount,
-      required this.friAmount,
-      required this.satAmount,
-      required this.sunAmount,
-      required this.maxY});
+  const MyBarGraph({
+    super.key,
+    required this.maxY,
+    required this.monAmount,
+    required this.tueAmount,
+    required this.wedAmount,
+    required this.thurAmount,
+    required this.friAmount,
+    required this.satAmount,
+    required this.sunAmount,
+  });
 
   @override
   Widget build(BuildContext context) {

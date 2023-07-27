@@ -28,21 +28,29 @@ class ExpenseSummary extends StatelessWidget {
     String sunday =
         convertDateTimeToString(startOfWeek.add(const Duration(days: 6)));
 
-    return Consumer<ExpenseData>(
-        builder: (context, value, child) => SizedBox(
-              height: 200,
-              child: MyBarGraph(
-                  monAmount: value.calculateDailyExpenseSummary()[monday] ?? 0,
-                  tueAmount: value.calculateDailyExpenseSummary()[tuesday] ?? 0,
-                  wedAmount:
-                      value.calculateDailyExpenseSummary()[wednesday] ?? 0,
-                  thurAmount:
-                      value.calculateDailyExpenseSummary()[thursday] ?? 0,
-                  friAmount: value.calculateDailyExpenseSummary()[friday] ?? 0,
-                  satAmount:
-                      value.calculateDailyExpenseSummary()[saturday] ?? 0,
-                  sunAmount: value.calculateDailyExpenseSummary()[sunday] ?? 0,
-                  maxY: 100),
-            ));
+    return Consumer<ExpenseData>(builder: (context, value, child) {
+      // Calculate the total amount for the week
+      double maxY = [
+        value.calculateDailyExpenseSummary()[monday] ?? 0,
+        value.calculateDailyExpenseSummary()[tuesday] ?? 0,
+        value.calculateDailyExpenseSummary()[wednesday] ?? 0,
+        value.calculateDailyExpenseSummary()[thursday] ?? 0,
+        value.calculateDailyExpenseSummary()[friday] ?? 0,
+        value.calculateDailyExpenseSummary()[saturday] ?? 0,
+        value.calculateDailyExpenseSummary()[sunday] ?? 0,
+      ].reduce((value, element) => value + element);
+      return SizedBox(
+        height: 200,
+        child: MyBarGraph(
+            monAmount: value.calculateDailyExpenseSummary()[monday] ?? 0,
+            tueAmount: value.calculateDailyExpenseSummary()[tuesday] ?? 0,
+            wedAmount: value.calculateDailyExpenseSummary()[wednesday] ?? 0,
+            thurAmount: value.calculateDailyExpenseSummary()[thursday] ?? 0,
+            friAmount: value.calculateDailyExpenseSummary()[friday] ?? 0,
+            satAmount: value.calculateDailyExpenseSummary()[saturday] ?? 0,
+            sunAmount: value.calculateDailyExpenseSummary()[sunday] ?? 0,
+            maxY: maxY),
+      );
+    });
   }
 }
