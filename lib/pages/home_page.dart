@@ -67,13 +67,17 @@ class _HomePageState extends State<HomePage> {
   // Save
   void save() {
     // Create expense item
-    ExpenseItem newExpense = ExpenseItem(
-        name: newExpenseNameController.text,
-        amount: newExpenseAmountController.text,
-        dateTime: DateTime.now());
+    if (newExpenseNameController.text.isNotEmpty &&
+        newExpenseAmountController.text.isNotEmpty) {
+      ExpenseItem newExpense = ExpenseItem(
+          name: newExpenseNameController.text,
+          amount: newExpenseAmountController.text,
+          dateTime: DateTime.now());
 
-    // Add the new expense
-    Provider.of<ExpenseData>(context, listen: false).addNewExpense(newExpense);
+      // Add the new expense
+      Provider.of<ExpenseData>(context, listen: false)
+          .addNewExpense(newExpense);
+    }
 
     // Close the add expense dialog
     Navigator.pop(context);
