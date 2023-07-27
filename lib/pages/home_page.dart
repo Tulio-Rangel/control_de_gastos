@@ -90,7 +90,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   // Cancel
-  void cancel() {}
+  void cancel() {
+    // Close the add expense dialog
+    Navigator.pop(context);
+    clear();
+  }
 
   // Clrear controllers
   void clear() {
