@@ -80,6 +80,11 @@ class _HomePageState extends State<HomePage> {
     clear();
   }
 
+  // Delete exoense
+  void deleteExpense(ExpenseItem expense) {
+    Provider.of<ExpenseData>(context, listen: false).deleteExpense(expense);
+  }
+
   // Cancel
   void cancel() {}
 
@@ -116,6 +121,8 @@ class _HomePageState extends State<HomePage> {
                       name: value.getAllExpenseList()[index].name,
                       amount: value.getAllExpenseList()[index].amount,
                       dateTime: value.getAllExpenseList()[index].dateTime,
+                      deleteTapped: (p0) =>
+                          deleteExpense(value.getAllExpenseList()[index]),
                     )),
           ],
         ),
