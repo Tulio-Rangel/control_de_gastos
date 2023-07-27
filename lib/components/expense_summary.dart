@@ -30,7 +30,7 @@ class ExpenseSummary extends StatelessWidget {
 
     return Consumer<ExpenseData>(builder: (context, value, child) {
       // Calculate the total amount for the week
-      double maxY = [
+      double calculatedMaxY = [
         value.calculateDailyExpenseSummary()[monday] ?? 0,
         value.calculateDailyExpenseSummary()[tuesday] ?? 0,
         value.calculateDailyExpenseSummary()[wednesday] ?? 0,
@@ -49,7 +49,7 @@ class ExpenseSummary extends StatelessWidget {
             friAmount: value.calculateDailyExpenseSummary()[friday] ?? 0,
             satAmount: value.calculateDailyExpenseSummary()[saturday] ?? 0,
             sunAmount: value.calculateDailyExpenseSummary()[sunday] ?? 0,
-            maxY: maxY),
+            maxY: calculatedMaxY),
       );
     });
   }
