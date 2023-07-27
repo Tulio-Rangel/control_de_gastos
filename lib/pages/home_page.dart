@@ -29,11 +29,14 @@ class _HomePageState extends State<HomePage> {
               // Expense name
               TextField(
                 controller: newExpenseNameController,
+                decoration: const InputDecoration(hintText: 'Expense name'),
               ),
 
               // Expense amount
               TextField(
                 controller: newExpenseAmountController,
+                keyboardType: TextInputType.number,
+                decoration: const InputDecoration(hintText: 'Expense amount'),
               )
             ],
           ),
