@@ -1,4 +1,4 @@
-import 'package:control_de_gastos/pages/home_page.dart';
+import 'package:control_de_gastos/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
